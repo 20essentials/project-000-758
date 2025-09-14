@@ -1,4 +1,9 @@
-*,
+import { render } from "solid-js/web";
+
+const App = () => (
+  <>
+    <style>
+      {`*,
 *::after,
 *::before {
   box-sizing: border-box;
@@ -7,17 +12,14 @@
   font-family: sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
     'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue';
 }
-
 a {
   -webkit-tap-highlight-color: transparent;
 }
-
 html {
   scroll-behavior: smooth;
   scrollbar-width: thin;
   scrollbar-color: transparent transparent;
 }
-
 body {
   height: 100vh;
   width: 100%;
@@ -27,27 +29,22 @@ body {
   align-items: end;
   background-image: linear-gradient(to top, #48c6ef 0%, #6f86d6 100%);
 }
-
 .container {
-  width: 100%;
-  margin-inline: auto;
   width: 400px;
+  margin-inline: auto;
 }
-
 .body {
   height: 300px;
   width: 100%;
   background: url(assets/body.webp) no-repeat 115px 130px;
-
-  .face {
-    width: 150px;
-    margin: 25px;
-    position: relative;
-    left: 100px;
-    animation: facemove 1s ease 0.1s 5 alternate;
-  }
 }
-
+.face {
+  width: 150px;
+  margin: 25px;
+  position: relative;
+  left: 100px;
+  animation: facemove 1s ease 0.1s 5 alternate;
+}
 @keyframes facemove {
   0%,
   100% {
@@ -56,4 +53,18 @@ body {
   50% {
     transform: translate(20px, 5px);
   }
-}
+}`}
+    </style>
+    <aside class="container">
+      <div class="body">
+        <img class="face" src="assets/face.webp" />
+      </div>
+    </aside>
+  </>
+);
+
+const root = document.createElement("div");
+document.body.appendChild(root);
+render(() => <App />, root);
+
+export default App;
